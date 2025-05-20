@@ -6,11 +6,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import models.Productos;
+import services.LoginService;
+import services.LoginServiceSessionImplement;
 import services.ProductoService;
 import services.ProductoServiceImplement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Optional;
+
 
 // Definición del Servlet que manejará la ruta /products
 @WebServlet("/products")
@@ -20,6 +24,10 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
+        LoginService auth = new LoginServiceSessionImplement();
+        //creamos una variable optional para obtener el nombre de usuario
+        Optional<String> usernameOptional= auth.getUserName(req);
 
         // 1. Obtener instancia del servicio de productos
         ProductoService service = new ProductoServiceImplement();
@@ -44,7 +52,7 @@ public class ProductosServlet extends HttpServlet {
 
         // 6. Título principal de la página
         out.println("<h1>Lista de productos</h1>");
-
+        out.println("<h1> Hola usaurio "+ usernameOptional.get() +"</h1>");
         // 7. Crear tabla para mostrar los productos
         out.println("<table border='1'>");  // Tabla con borde visible
 

@@ -2,12 +2,10 @@ package controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 import services.LoginService;
 import services.LoginServiceImplement;
+import services.LoginServiceSessionImplement;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,23 +23,13 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        // Obtener o generar todas las cookies del request, si no hay crear arreglo vacío
-        /*Cookie[] cookies = req.getCookies() != null ? req.getCookies() : new Cookie[0];
-
-        // Buscar la cookie llamada "username" usando Streams de Java
-        Optional<String> cookieOptional = Arrays.stream(cookies)
-                .filter(c -> "username".equals(c.getName()))  // Filtrar por nombre de cookie
-                .map(Cookie::getValue)  // Obtener solo el valor de la cookie
-                .findAny();  // Tomar la primera coincidencia*/
-
-        //Creamos el nuevo objeto de la cookie
-        LoginService auth= new LoginServiceImplement();
-        Optional<String> cookieOptional = auth.getUserName(req);
-
+        //implementamos el objeto de tipo sesion
+        LoginService auth = new LoginServiceSessionImplement();
+        //creamos una variable optional para obtener el nombre de usuario
+        Optional <String>usernameOptional= auth.getUserName(req);
 
         // Si existe la cookie (usuario ya autenticado)
-        if (cookieOptional.isPresent()) {
+        if (usernameOptional.isPresent()) {
             // Configurar tipo de contenido de la respuesta, se mostara un documento que diga que ya iniciaste sesion
             resp.setContentType("text/html;charset=UTF-8");
 
@@ -52,11 +40,11 @@ public class LoginServlet extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<meta charset=\"utf-8\">");  // Especificar encoding
-                out.println("<title>Bienvenido</title>");  // Título de la pestaña
+                out.println("<title>hola usuario "+ usernameOptional.get() +"</title>");  // Título de la pestaña
                 out.println("</head>");
                 out.println("<body>");
                 // Mostrar mensaje personalizado con el nombre de usuario
-                out.println("<h1>Hola "+ cookieOptional.get()+" ya iniciaste sesión anteriormente!</h1>");
+                out.println("<h1>Hola "+ usernameOptional.get()+" ya iniciaste sesión anteriormente!</h1>");
                 // Enlace para volver al inicio
                 out.println("<p><a href='index.html'>Volver al inicio</a></p>");
                 out.println("</body>");
@@ -81,26 +69,12 @@ public class LoginServlet extends HttpServlet {
         // Validar credenciales
         if (username.equals(USERNAME) && password.equals(PASSWORD)) {
             // Si son válidas, crear cookie de autenticación
-            Cookie usernameCookie = new Cookie("username", username);
-            // Añadir cookie a la respuesta
-            resp.addCookie(usernameCookie);
 
-            // Configurar tipo de contenido
-            resp.setContentType("text/html;charset=UTF-8");
+            //creamos la sesion
+            HttpSession session = req.getSession();
+            //seteo los valores de la sesion
+            session.setAttribute("username", username);
 
-            // Generar página de bienvenida
-            try (PrintWriter out = resp.getWriter()) {
-                out.print("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<meta charset=\"utf-8\">");
-                out.println("<title>Bienvenido a la app</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Bienvenido a mi APP</h1>");
-                out.println("</body>");
-                out.println("</html>");
-            }
 
             // Redirigir a la página de login (mostrará mensaje de bienvenida)
             resp.sendRedirect("login.html");
