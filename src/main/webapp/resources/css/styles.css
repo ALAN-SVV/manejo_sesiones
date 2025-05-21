@@ -1,0 +1,100 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif; /* Fuente principal */
+    background-color: #f8f9fa; /* Color de fondo */
+    margin: 0; /* Sin margen */
+    padding: 20px; /* Espaciado interno */
+    color: #343a40; /* Color del texto */
+}
+
+/* Encabezados */
+h1 {
+    color: #2c3e50; /* Color del encabezado principal */
+    text-align: center; /* Alineación centrada */
+    margin-bottom: 30px; /* Margen inferior */
+}
+
+h2 {
+    color: #4CAF50; /* Color del segundo encabezado */
+    font-size: 1.5em; /* Tamaño de fuente */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+.greeting {
+    color: #4CAF50; /* Color del saludo */
+    font-style: italic; /* Estilo en cursiva */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Tabla */
+table {
+    width: 80%; /* Ancho de la tabla */
+    margin: 20px auto; /* Centrado horizontal */
+    border-collapse: collapse; /* Colapsar bordes */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+th, td {
+    padding: 12px 15px; /* Espaciado interno de celdas */
+    text-align: left; /* Alineación a la izquierda */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+}
+
+th {
+    background-color: #4CAF50; /* Color de fondo de encabezados */
+    color: white; /* Color del texto en encabezados */
+    font-weight: bold; /* Negrita para encabezados */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+tr:hover {
+    background-color: #e9e9e9; /* Color de fondo al pasar el mouse */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Enlaces */
+a {
+    color: #0066cc; /* Color de enlaces */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: bold; /* Negrita para enlaces */
+}
+
+a:hover {
+    color: #004d99; /* Color al pasar el mouse */
+    text-decoration: underline; /* Subrayado al pasar */
+}
+
+/* Lista del index */
+ul {
+    list-style: none; /* Sin viñetas */
+    padding: 0; /* Sin espaciado */
+    width: 80%; /* Ancho de la lista */
+    margin: 30px auto; /* Centrado horizontal */
+}
+
+li {
+    margin: 15px 0; /* Margen vertical */
+    padding: 10px; /* Espaciado interno */
+    background-color: white; /* Fondo blanco */
+    border-radius: 4px; /* Bordes redondeados */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+li:hover {
+    background-color: #f0f0f0; /* Color al pasar el mouse */
+}
+
+/* Estilos para párrafos */
+p {
+    text-align: center; /* Alineación centrada */
+    color: #d35400; /* Color naranja oscuro */
+    font-size: 1.1em; /* Tamaño de fuente */
+    margin-top: 20px; /* Margen superior */
+    padding: 10px; /* Espaciado interno */
+    background-color: #fef9e7; /* Fondo amarillo claro */
+    border-radius: 5px; /* Bordes redondeados */
+    border-left: 4px solid #f39c12; /* Borde lateral naranja */
+}
