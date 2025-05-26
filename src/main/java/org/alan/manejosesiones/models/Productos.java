@@ -1,4 +1,4 @@
-package models;
+package org.alan.manejosesiones.models;
 
 // Clase que representa un producto con sus atributos básicos
 public class Productos {

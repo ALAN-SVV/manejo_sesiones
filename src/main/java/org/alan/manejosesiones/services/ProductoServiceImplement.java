@@ -1,11 +1,11 @@
-package services;
+package org.alan.manejosesiones.services;
 
-import models.Productos;
-import java.util.ArrayList;
+import org.alan.manejosesiones.models.Productos;
+
 import java.util.Arrays;
 import java.util.List;
 // Implementación de la interfaz ProductoService
-public class ProductoServiceImplement implements services.ProductoService {
+public class ProductoServiceImplement implements ProductoService {
 
     @Override
     public List<Productos> listar() {

@@ -1,15 +1,13 @@
-package controllers;
+package org.alan.manejosesiones.controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import services.LoginService;
-import services.LoginServiceImplement;
-import services.LoginServiceSessionImplement;
+import org.alan.manejosesiones.services.LoginService;
+import org.alan.manejosesiones.services.LoginServiceSessionImplement;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Optional;
 
 // Definición del Servlet que manejará las rutas /login y /login.html

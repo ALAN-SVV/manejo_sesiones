@@ -1,4 +1,4 @@
-package controllers;
+package org.alan.manejosesiones.controllers;
 
 
 import jakarta.servlet.ServletException;
@@ -7,8 +7,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import services.LoginService;
-import services.LoginServiceSessionImplement;
+import org.alan.manejosesiones.services.LoginService;
+import org.alan.manejosesiones.services.LoginServiceSessionImplement;
 
 import java.io.IOException;
 import java.util.Optional;

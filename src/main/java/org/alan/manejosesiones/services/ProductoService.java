@@ -1,6 +1,6 @@
-package services;
+package org.alan.manejosesiones.services;
 
-import models.Productos;
+import org.alan.manejosesiones.models.Productos;
 import java.util.List;
 
 public interface ProductoService {

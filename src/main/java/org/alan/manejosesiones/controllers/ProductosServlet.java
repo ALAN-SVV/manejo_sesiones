@@ -1,15 +1,15 @@
-package controllers;
+package org.alan.manejosesiones.controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import models.Productos;
-import services.LoginService;
-import services.LoginServiceSessionImplement;
-import services.ProductoService;
-import services.ProductoServiceImplement;
+import org.alan.manejosesiones.models.Productos;
+import org.alan.manejosesiones.services.LoginService;
+import org.alan.manejosesiones.services.LoginServiceSessionImplement;
+import org.alan.manejosesiones.services.ProductoService;
+import org.alan.manejosesiones.services.ProductoServiceImplement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
