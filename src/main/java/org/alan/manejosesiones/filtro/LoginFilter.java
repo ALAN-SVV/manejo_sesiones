@@ -9,7 +9,7 @@ import org.alan.manejosesiones.services.LoginServiceSessionImplement;
 
 import java.io.IOException;
 import java.util.Optional;
-@WebFilter({"/products","/agregar-carro"})
+@WebFilter({"/products","/categorias"})
 
 public class LoginFilter implements Filter {
     @Override

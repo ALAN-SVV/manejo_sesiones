@@ -16,7 +16,7 @@ import java.sql.SQLException;
 @WebFilter("/*")
 public class ConexionFilter implements Filter {
     @Override
-    //filtramos conexiion del cliente y el servidor
+    //filtramos conexion del cliente y el servidor
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         //Crear una variable de tipo conexion
         try {
