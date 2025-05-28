@@ -6,7 +6,7 @@ import java.sql.SQLException;
  * como se desee o cualquier objeto entidad que se deseee manejar*/
 public interface Repository <T> {
     List<T> listar () throws SQLException;// se ve cualquier erro en la base de datos
-    T porId(int id) throws SQLException;//busca el elemnto de la base por su identificador o id
+    T porId(Long id) throws SQLException;//busca el elemnto de la base por su identificador o id
     void guardar (T t) throws SQLException;// va a recibir un parametor generico
-    void eliminar (int id) throws SQLException;//metodo para eliminar un registro de la base de datos
+    void eliminar (Long id) throws SQLException;//metodo para eliminar un registro de la base de datos
 }

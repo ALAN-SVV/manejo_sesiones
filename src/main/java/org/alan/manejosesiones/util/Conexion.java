@@ -27,7 +27,7 @@ public class Conexion {
                 System.out.println("Base de datos: " + connection.getCatalog());
                 System.out.println("URL: " + url);
             } else {
-                System.out.println("Conexión rechazada: La conexión es nula");
+                System.out.println("Conexión rechazada");
             }
         } catch (SQLException e) {
             System.out.println("Conexión rechazada: " + e.getMessage());

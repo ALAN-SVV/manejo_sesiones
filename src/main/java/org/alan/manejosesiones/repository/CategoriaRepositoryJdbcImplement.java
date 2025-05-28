@@ -28,11 +28,11 @@ public class CategoriaRepositoryJdbcImplement implements Repository<Categoria>{
 
 
     @Override
-    public Categoria porId(int id) throws SQLException {
+    public Categoria porId(Long id) throws SQLException {
         //creamos un objeto de tipo categoria nulo
         Categoria categoria=null;
         try(PreparedStatement stmt= conn.prepareStatement("select * from categoria where id=?")){
-            stmt.setInt(1,id);
+            stmt.setLong(1,id);
             //ejecutamos la consulta
             try (ResultSet rs=stmt.executeQuery()){//traeamos todos los datos del objeto o categoria
                 categoria=getCategoria(rs);
@@ -45,7 +45,7 @@ public class CategoriaRepositoryJdbcImplement implements Repository<Categoria>{
     public void guardar(Categoria categoria) throws SQLException {
         //declaro una variable de tipo String
         String sql;
-        if (categoria.getIdCategoria()>0){
+        if (categoria.getIdCategoria()!=null && categoria.getIdCategoria()>0){
             sql ="update categoria set nombre=?,descripcion=?  where idCategoria=?";
         }else {
             sql="insert into categoria(nombre,descripcion,condicion) values(?,?,1)";
@@ -53,13 +53,13 @@ public class CategoriaRepositoryJdbcImplement implements Repository<Categoria>{
         try(PreparedStatement stmt=conn.prepareStatement(sql)){
             stmt.setString(1,categoria.getNombre());
             stmt.setString(2,categoria.getDescripcion());
-            stmt.setInt(3,categoria.getIdCategoria());
+            stmt.setLong(3,categoria.getIdCategoria());
             stmt.executeUpdate();
         }
     }
 
     @Override
-    public void eliminar(int id) throws SQLException {
+    public void eliminar(Long id) throws SQLException {
 
     }
     private static Categoria getCategoria(ResultSet rs) throws SQLException {
@@ -67,7 +67,7 @@ public class CategoriaRepositoryJdbcImplement implements Repository<Categoria>{
         c.setNombre(rs.getString("nombre"));//setea el nombre del metodo que se obtiene de nuestro javabeans(categoria)
         c.setDescripcion(rs.getString("descripcion"));
         c.setCondicion(rs.getInt("condicion"));
-        c.setIdCategoria(rs.getInt("idCategoria"));
+        c.setIdCategoria(rs.getLong("idCategoria"));
         return c;
     }
 }

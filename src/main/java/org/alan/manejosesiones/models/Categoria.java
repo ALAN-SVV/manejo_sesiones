@@ -4,7 +4,7 @@ package org.alan.manejosesiones.models;
 // Clase que representa una categoría con sus atributos básicos
 public class Categoria {
     //encapsulamos
-    private int idCategoria;
+    private Long idCategoria;
     private String nombre;
     private String descripcion;
     private int condicion;
@@ -13,7 +13,7 @@ public class Categoria {
 
     }
 
-    public Categoria(int idCategoria, String nombre, String descripcion, int condicion) {
+    public Categoria(Long idCategoria, String nombre, String descripcion, int condicion) {
         this.idCategoria = idCategoria;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -21,11 +21,11 @@ public class Categoria {
     }
     //implementamos los metodos getter y setter
 
-    public int getIdCategoria() {
+    public Long getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(int idCategoria) {
+    public void setIdCategoria(Long idCategoria) {
         this.idCategoria = idCategoria;
     }
 
