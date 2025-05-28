@@ -1,10 +1,10 @@
-package org.alan.manejosesiones.services;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Optional;
+    package org.alan.manejosesiones.services;
+    import jakarta.servlet.http.HttpServletRequest;
+    import java.util.Optional;
 
 
-public interface LoginService {
-    //devuelve un string
-    Optional<String> getUserName(HttpServletRequest request);
+    public interface LoginService {
+        //devuelve un string
+        Optional<String> getUserName(HttpServletRequest request);
 
-}
+    }

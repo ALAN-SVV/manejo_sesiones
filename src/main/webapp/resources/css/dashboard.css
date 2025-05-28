@@ -1,0 +1,176 @@
+/* Estilos generales */
+* {
+    margin: 0; /* Elimina márgenes por defecto */
+    padding: 0; /* Elimina rellenos por defecto */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Establece la fuente */
+}
+
+body {
+    background-color: #f5f5f5; /* Color de fondo del cuerpo */
+    color: #333; /* Color del texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+}
+
+/* Encabezado */
+.header {
+    background-color: #2c3e50; /* Color de fondo del encabezado */
+    color: white; /* Color del texto en el encabezado */
+    padding: 1rem 2rem; /* Espaciado interno */
+    display: flex; /* Utiliza flexbox para el diseño */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Alinea verticalmente los elementos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra del encabezado */
+}
+
+.header h1 {
+    font-size: 1.8rem; /* Tamaño de fuente del título */
+}
+
+.user-info {
+    display: flex; /* Utiliza flexbox para la información del usuario */
+    align-items: center; /* Alinea verticalmente los elementos */
+    gap: 1rem; /* Espacio entre elementos */
+}
+
+.logout-link {
+    color: #ecf0f1; /* Color del enlace de cierre de sesión */
+    text-decoration: none; /* Elimina subrayado */
+    transition: color 0.3s; /* Transición suave para el color */
+}
+
+.logout-link:hover {
+    color: #3498db; /* Color del enlace al pasar el mouse */
+}
+
+/* Contenido principal */
+.dashboard-content {
+    background-color: white; /* Color de fondo del contenido principal */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Sombra del contenido */
+    padding: 1.5rem; /* Espaciado interno */
+    margin-bottom: 2rem; /* Margen inferior */
+}
+
+.dashboard-content h2 {
+    color: #2c3e50; /* Color del encabezado secundario */
+    margin-bottom: 1.5rem; /* Margen inferior */
+    padding-bottom: 0.5rem; /* Espaciado inferior */
+    border-bottom: 1px solid #eee; /* Línea inferior */
+}
+
+/* Tabla de productos */
+.product-table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapsa bordes de la tabla */
+    margin-top: 1rem; /* Margen superior */
+}
+
+.product-table thead {
+    background-color: #3498db; /* Color de fondo del encabezado de la tabla */
+    color: white; /* Color del texto del encabezado */
+}
+
+.product-table th,
+.product-table td {
+    padding: 12px 15px; /* Espaciado interno de celdas */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+.product-table th {
+    font-weight: 600; /* Peso de fuente más pesado para encabezados */
+}
+
+.product-table tbody tr {
+    border-bottom: 1px solid #eee; /* Línea inferior entre filas */
+    transition: background-color 0.2s; /* Transición suave para el color de fondo */
+}
+
+.product-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo para filas pares */
+}
+
+.product-table tbody tr:hover {
+    background-color: #f1f1f1; /* Color de fondo al pasar el mouse sobre una fila */
+}
+
+/* Botones */
+.btn {
+    padding: 5px 10px; /* Espaciado interno de botones */
+    border-radius: 4px; /* Bordes redondeados */
+    text-decoration: none; /* Elimina subrayado */
+    font-size: 0.85rem; /* Tamaño de fuente de los botones */
+    margin: 0 2px; /* Margen horizontal entre botones */
+    transition: all 0.3s; /* Transición suave para todos los cambios */
+    border: 1px solid transparent; /* Borde transparente por defecto */
+}
+
+.btn-edit {
+    color: #2980b9; /* Color del botón de editar */
+    border-color: #2980b9; /* Color del borde del botón de editar */
+}
+
+.btn-edit:hover {
+    background-color: #2980b9; /* Color de fondo al pasar el mouse */
+    color: white; /* Color del texto al pasar el mouse */
+}
+
+.btn-disable {
+    color: #e74c3c; /* Color del botón de desactivar */
+    border-color: #e74c3c; /* Color del borde del botón de desactivar */
+}
+
+.btn-disable:hover {
+    background-color: #e74c3c; /* Color de fondo al pasar el mouse */
+    color: white; /* Color del texto al pasar el mouse */
+}
+
+.btn-enable {
+    color: #27ae60; /* Color del botón de activar */
+    border-color: #27ae60; /* Color del borde del botón de activar */
+}
+
+.btn-enable:hover {
+    background-color: #27ae60; /* Color de fondo al pasar el mouse */
+    color: white; /* Color del texto al pasar el mouse */
+}
+
+/* Mensajes */
+.login-message {
+    margin-top: 1rem; /* Margen superior */
+    color: #7f8c8d; /* Color del mensaje de inicio de sesión */
+    font-style: italic; /* Estilo en cursiva */
+}
+
+/* Acciones */
+.actions {
+    display: flex; /* Utiliza flexbox para las acciones */
+    gap: 5px; /* Espacio entre acciones */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Cambia la dirección del flex a columna en pantallas pequeñas */
+        text-align: center; /* Alinea el texto al centro */
+        padding: 1rem; /* Espaciado interno reducido */
+    }
+
+    .user-info {
+        margin-top: 0.5rem; /* Margen superior */
+        justify-content: center; /* Centra los elementos */
+    }
+
+    .dashboard-content {
+        padding: 1rem; /* Espaciado interno reducido */
+    }
+
+    .product-table {
+        display: block; /* Cambia la tabla a bloque para permitir desplazamiento */
+        overflow-x: auto; /* Habilita el desplazamiento horizontal */
+    }
+
+    .actions {
+        flex-wrap: wrap; /* Permite que las acciones se envuelvan en líneas */
+    }
+}
