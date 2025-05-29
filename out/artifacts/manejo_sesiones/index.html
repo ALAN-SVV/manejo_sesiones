@@ -3,21 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Manejo de Cookies</title>
-  <script>
-    function checkAuth() {
-      // Verificar si existe una cookie de sesión (ajusta el nombre según tu aplicación)
-      const cookies = document.cookie.split(';').some((item) => item.trim().startsWith('session='));
-
-      if (!cookies) {
-        // Si no hay cookie de sesión, redirigir al login
-        window.location.href = "/manejo_sesiones/login";
-      }
-      // Si hay cookie, mostrar el contenido normal
-    }
-
-    window.onload = checkAuth;
-  </script>
   <link rel="stylesheet" type="text/css" href="/manejo_sesiones/resources/css/styles.css">
+
 </head>
 <body>
 <h1>Manejo de Cookies</h1>
