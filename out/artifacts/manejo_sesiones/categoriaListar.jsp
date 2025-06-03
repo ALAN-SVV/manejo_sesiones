@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: ESTUDIANTE
@@ -17,28 +18,33 @@
 <body>
 <%
     if(username.isPresent()){%>
-        <div style="color:blue;">Hola<%= username.get()%>,  bienvenido a la apliación</div>
-        <div><p><a href="${pageContext.request.contextPath}/categoria/form">Ingrese el producto</a></p></div>
+<div style="color:blue;">Hola<%= username.get()%>,  bienvenido a la apliación</div>
+<div><p><a href="${pageContext.request.contextPath}/categoria/form">Ingrese el producto</a></p></div>
 <%
-}
+    }
 %>
 
 <h1> Listado Categoria</h1>
 <table>
     <thead>
-        <th>Id Categoria</th>
-        <th>Nombre</th>
-        <th>Descripcion</th>
-        <th>Condicion</th>
+    <th>Id Categoria</th>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Condicion</th>
     </thead>
     <%
         for (Categoria cat : categorias) {%>
     <tbody>
-        <td><%= cat.getIdCategoria()%></td>
-        <td><%= cat.getNombre()%></td>
-        <td><%= cat.getDescripcion()%></td>
-        <td><%= cat.getCondicion()%></td>
-        <td><a href="">Activar o Desactivar</a></td>
+    <td><%= cat.getIdCategoria()%></td>
+    <td><%= cat.getNombre()%></td>
+    <td><%= cat.getDescripcion()%></td>
+    <td><%= cat.getCondicion()%></td>
+
+
+
+    <td><a href="<%=request.getContextPath()%>/categoria/form?id=<%=cat.getIdCategoria()%>">Editar</a></td>
+    <td><a href="">Activar o Desactivar</a></td>
+
     </tbody>
     <% } %>
 

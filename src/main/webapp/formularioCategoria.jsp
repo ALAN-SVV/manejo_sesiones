@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: Alan Velasco
@@ -28,6 +29,7 @@
 
   <%-- Campo para el nombre de la categoría, prellenado si ya existe --%>
   <label for="nombre">Nombre:</label>
+  <input type="text" name="id" value="<%=categoria.getIdCategoria()%>">
   <input type="text" id="nombre" name="nombre" value="<%= categoria.getNombre() != null ? categoria.getNombre() : "" %>" required />
   <br/><br/>
 
@@ -37,8 +39,10 @@
   <br/><br/>
 
   <%-- Botón para guardar y un enlace para cancelar (regresa al listado) --%>
-  <button type="submit">Guardar</button>
+  <input type="submit" value="<%=(categoria.getIdCategoria()!=null && categoria.getIdCategoria()>0)? "EDITAR" : "CREAR"%>">
   <a href="<%= request.getContextPath() %>/categoria">Cancelar</a>
+
+
 </form>
 </body>
 </html>
