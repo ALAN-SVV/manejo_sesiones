@@ -38,12 +38,17 @@
     <td><%= cat.getIdCategoria()%></td>
     <td><%= cat.getNombre()%></td>
     <td><%= cat.getDescripcion()%></td>
-    <td><%= cat.getCondicion()%></td>
+    <td><%= cat.isCondicion()%></td>
 
 
 
     <td><a href="<%=request.getContextPath()%>/categoria/form?id=<%=cat.getIdCategoria()%>">Editar</a></td>
-    <td><a href="">Activar o Desactivar</a></td>
+    <td>
+        <a href="<%=request.getContextPath()%>/categoria/cambiar-estado?id=<%=cat.getIdCategoria()%>&estado=<%=cat.isCondicion()%>"
+           style="<%= cat.isCondicion() ? "color:red;" : "color:green;" %>">
+            <%= cat.isCondicion() ? "Desactivar" : "Activar" %>
+        </a>
+    </td>
 
     </tbody>
     <% } %>

@@ -28,7 +28,7 @@
 <h1><%= (categoria.getIdCategoria() != null && categoria.getIdCategoria() > 0) ? "Editar Categoría" : "Nueva Categoría" %></h1>
 
 <form action="<%= request.getContextPath() %>/categoria/form" method="post">
-  <input type="text" name="id" value="<%=categoria.getIdCategoria()%>">
+  <input type="hidden" name="id" value="<%=categoria.getIdCategoria()%>">
 
   <div>
     <label for="nombre">Nombre:</label><br>
