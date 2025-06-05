@@ -92,6 +92,16 @@ public class Articulo {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+    public boolean tieneImagen() {
+        return imagen != null && !imagen.trim().isEmpty();
+    }
+
+    public String getImagenThumbnail() {
+        if (!tieneImagen()) return "";
+
+        // Opcional: Transformar URL para obtener thumbnail si usas un servicio como Cloudinary
+        return imagen + "?width=100"; // Ejemplo para algunos servicios
+    }
 
     // Métodos getter y setter para condicion
     public boolean isCondicion() {

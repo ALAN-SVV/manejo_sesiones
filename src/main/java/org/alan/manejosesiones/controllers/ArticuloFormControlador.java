@@ -12,6 +12,8 @@ import org.alan.manejosesiones.services.CategoriaService;
 import org.alan.manejosesiones.services.CategoriaServiceJdbcImplement;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Connection;
 import java.util.Optional;
 
@@ -94,15 +96,31 @@ public class ArticuloFormControlador extends HttpServlet {
             req.setAttribute("errorStock", "El stock no puede ser negativo");
             tieneErrores = true;
         }
+
         if (descripcion == null || descripcion.trim().isEmpty()) {
-            req.setAttribute("errorDescripcion", "No puede estar vacia la descripcion");
-            tieneErrores = true;
-        }
-        if (descripcion == null || imagen.trim().isEmpty()) {
-            req.setAttribute("errorImagen", "La imagen no puede estar vacia");
+            req.setAttribute("errorDescripcion", "La descripción no puede estar vacía");
             tieneErrores = true;
         }
 
+        // Validación mejorada para la URL de imagen
+        if (imagen == null || imagen.trim().isEmpty()) {
+            req.setAttribute("errorImagen", "La URL de la imagen es requerida");
+            tieneErrores = true;
+        } else {
+            try {
+                // Validar que sea una URL válida
+                new URL(imagen);
+
+                // Validación adicional para extensiones comunes de imagen
+                if (!imagen.matches("(?i).*\\.(jpg|jpeg|png|gif|webp)$")) {
+                    req.setAttribute("errorImagen", "La URL debe apuntar a una imagen (jpg, png, gif, webp)");
+                    tieneErrores = true;
+                }
+            } catch (MalformedURLException e) {
+                req.setAttribute("errorImagen", "La URL de la imagen no es válida");
+                tieneErrores = true;
+            }
+        }
 
         // Si hay errores, reenviamos al formulario
         if (tieneErrores) {
