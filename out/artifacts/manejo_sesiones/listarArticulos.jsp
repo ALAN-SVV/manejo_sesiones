@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: admin
-  Date: 3/6/2025
-  Time: 23:13
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.util.*, org.alan.manejosesiones.models.*" %>
 <%
   List<Articulo> articulos = (List<Articulo>) request.getAttribute("articulos");
@@ -77,13 +69,45 @@
       font-weight: bold;
       cursor: pointer;
     }
-    .acciones a {
-      margin-right: 8px;
-      text-decoration: none;
-    }
     .welcome-message {
       color: blue;
       margin-bottom: 15px;
+    }
+    /* Nuevos estilos para botones */
+    .btn {
+      display: inline-block;
+      padding: 6px 12px;
+      margin: 2px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .btn-edit {
+      background-color: #3498db;
+      color: white;
+    }
+    .btn-edit:hover {
+      background-color: #2980b9;
+    }
+    .btn-deactivate {
+      background-color: #e74c3c;
+      color: white;
+    }
+    .btn-activate {
+      background-color: #2ecc71;
+      color: white;
+    }
+    .btn-deactivate:hover {
+      background-color: #c0392b;
+    }
+    .btn-activate:hover {
+      background-color: #27ae60;
+    }
+    .acciones {
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -122,7 +146,7 @@
   <tr>
     <td><%= art.getIdArticulo() %></td>
     <td>
-      <% if (art.getImagen() != null && !art.getImagen().isEmpty()) { %>
+      <% if (art.getImagen() != null && !art.getImagen().isEmpty() && !art.getImagen().equals("Ener")) { %>
       <img src="<%= art.getImagen() %>"
            class="imagen-articulo"
            onclick="mostrarImagen('<%= art.getImagen() %>')"
@@ -137,9 +161,10 @@
     <td><%= art.getStock() %></td>
     <td><%= art.isCondicion() ? "Activo" : "Inactivo" %></td>
     <td class="acciones">
-      <a href="<%=request.getContextPath()%>/articulo/form?id=<%=art.getIdArticulo()%>">Editar</a>
+      <a href="<%=request.getContextPath()%>/articulo/form?id=<%=art.getIdArticulo()%>"
+         class="btn btn-edit">Editar</a>
       <a href="<%=request.getContextPath()%>/articulo/cambiar-estado?id=<%=art.getIdArticulo()%>&estado=<%=art.isCondicion()%>"
-         style="<%= art.isCondicion() ? "color:red;" : "color:green;" %>">
+         class="btn <%= art.isCondicion() ? "btn-deactivate" : "btn-activate" %>">
         <%= art.isCondicion() ? "Desactivar" : "Activar" %>
       </a>
     </td>
@@ -148,8 +173,8 @@
   </tbody>
 </table>
 
+<!-- Resto del código JavaScript permanece igual -->
 <script>
-  // Función para mostrar imagen en modal
   function mostrarImagen(urlImagen) {
     const modal = document.getElementById("imagenModal");
     const modalImg = document.getElementById("imagenAmpliada");
@@ -157,12 +182,10 @@
     modal.style.display = "block";
     modalImg.src = urlImagen;
 
-    // Cerrar al hacer clic en la X
     document.getElementsByClassName("close")[0].onclick = function() {
       modal.style.display = "none";
     }
 
-    // Cerrar al hacer clic fuera de la imagen
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
@@ -170,7 +193,6 @@
     }
   }
 
-  // Carga diferida de imágenes
   document.addEventListener("DOMContentLoaded", function() {
     const imagenes = document.querySelectorAll(".imagen-articulo");
 

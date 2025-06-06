@@ -100,6 +100,7 @@
       font-style: italic;
     }
   </style>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/manejo_sesiones/resources/css/formularioArticulo.css">
 </head>
 <body>
 
